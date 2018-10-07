@@ -7,10 +7,23 @@
 \hline
 \multicolumn{2}{|p{5cm}|}{Use case under test} & \multicolumn{3}{p{9cm}|}{Bestil drink}                                       \\ \hline
 \multicolumn{2}{|p{5cm}|}{Scenarie}            & \multicolumn{3}{p{9cm}|}{Hovedscenarie}                                          \\ \hline
-\multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Drinkmaster er funktionsdygtig og brugeren har placeret etglas i systemet.}                                 \\ \hline
+\multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Drinkmaster er funktionsdygtig og brugeren har placeret et glas i systemet.}                                 \\ \hline
 Steps               & Handlinger          & Forventet observation/resultater & Faktisk observation/resultater & OK/ FAIL \\ \hline
 1    & Bruger vælger drinken "Vodka/cola" på touchscreen.  & Systemet modtager brugerens valg og undersøger om der er tilstrækkelige mængder af ingredienser til at lave drinken. Systemet doserer 2 cl vodka og 20 cl cola og viser beskeden ”Valgte drink er klar – tag din drink” på touchscreen når drinken er færdig. &   &         \\ \hline
 2    & Bruger tager glasset med drinken.  & Systemet returnerer til hovedmenuen. &   &         \\ \hline
+
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{|p{1cm}|p{4cm}|p{4cm}|p{4cm}|p{1cm}|}
+\hline
+\multicolumn{2}{|p{5cm}|}{Use case under test} & \multicolumn{3}{p{9cm}|}{Bestil drink}                                       \\ \hline
+\multicolumn{2}{|p{5cm}|}{Scenarie}            & \multicolumn{3}{p{9cm}|}{EXT 1: Ikke tilstrækkelige mængder af ingredienser}                                          \\ \hline
+\multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Drinkmaster er funktionsdygtig og brugeren har placeret et glas i systemet.}                                 \\ \hline
+Steps               & Handlinger          & Forventet observation/resultater & Faktisk observation/resultater & OK/ FAIL \\ \hline
+1    & Bruger vælger drinken "Vodka/cola" på touchscreen.  & Systemet giver besked om at en eller flere ingredienser skal genopfyldes, og venter på ejer, så UC 4 kan initieres. &   &      \\ \hline
+2    & Ejer gennemfører UC 4  & Systemet returnerer til UC 1. &   &         \\ \hline
 
 \end{tabular}
 \end{table}
@@ -31,6 +44,18 @@ Steps               & Handlinger          & Forventet observation/resultater & F
 \end{tabular}
 \end{table}
 
+\begin{table}[H]
+\begin{tabular}{|p{1cm}|p{4cm}|p{4cm}|p{4cm}|p{1cm}|}
+\hline
+\multicolumn{2}{|p{5cm}|}{Use case under test} & \multicolumn{3}{p{9cm}|}{Lav egen drink}                                       \\ \hline
+\multicolumn{2}{|p{5cm}|}{Scenarie}            & \multicolumn{3}{p{9cm}|}{EXT 1: Bruger trykker annullér.}                                          \\ \hline
+\multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Maskinen er tændt og aktiveret}                                 \\ \hline
+Steps               & Handlinger          & Forventet observation/resultater & Faktisk observation/resultater & OK/ FAIL \\ \hline
+1    & Bruger trykker på annullér  & Systemet gemmer ikke de valgte indstillinger og returnerer til hovedmenuen. & &         \\ \hline
+
+\end{tabular}
+\end{table}
+
 \subsection{UC 3: Slet drink}
 
 \begin{table}[H]
@@ -43,6 +68,19 @@ Steps               & Handlinger          & Forventet observation/resultater & F
 1    & Ejer vælger "Slet drink"på touchskærmen.  & System viser en liste over drinks i databasen. &   &         \\ \hline
 2    & Bruger vælger "Vodka/juice" og trykker "OK"  & Systemet viser beskeden ”Vil du slette den valgtedrink?”.  &   &         \\ \hline
 3    & Ejer trykker på "Ja".  & Systemet sletter drinken i databasen, og udskriver beskeden "Drink slettet".  &   &         \\ \hline
+
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{|p{1cm}|p{4cm}|p{4cm}|p{4cm}|p{1cm}|}
+\hline
+\multicolumn{2}{|p{5cm}|}{Use case under test} & \multicolumn{3}{p{9cm}|}{Slet drink}                                       \\ \hline
+\multicolumn{2}{|p{5cm}|}{Scenarie}            & \multicolumn{3}{p{9cm}|}{EXT 1: Ejeren annullerer sletning af drink.}                                          \\ \hline
+\multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Ejer  har  tilstrækkelige  rettigheder  til  at  kunne  slette  en drink fra databasen. Touchskærmen er tændt.}                                 \\ \hline
+Steps               & Handlinger          & Forventet observation/resultater & Faktisk observation/resultater & OK/ FAIL \\ \hline
+1    & Ejer trykker på nej.  & Systemet går tilbage til listen over drinks. &   &      \\ \hline
+
 
 \end{tabular}
 \end{table}
@@ -102,7 +140,7 @@ Steps               & Handlinger          & Forventet observation/resultater & F
 \multicolumn{2}{|p{5cm}|}{Scenarie}            & \multicolumn{3}{p{9cm}|}{Hovedscenarie}                                          \\ \hline
 \multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Systemet er tændt og klar til brug.}                                 \\ \hline
 Steps               & Handlinger          & Forventet observation/resultater & Faktisk observation/resultater & OK/ FAIL \\ \hline
-1    & Bruger vælger ønsket flaske på touchscreen  &  RPi sender data til PSoC Master. PSoC Master sender data til PSoC Slave som tænder for steppermotoren. Steppermotoren drejer flaskebeholder rundt og stopper når ønsket flaske er ved doseringspositionen. &   &         \\ \hline
+1    & Bruger vælger vodka på touchscreen  &  RPi sender data til PSoC Master. PSoC Master sender data til PSoC Slave som tænder for steppermotoren. Steppermotoren drejer flaskebeholder rundt og stopper når vodkaflasken er ved doseringspositionen. &   &         \\ \hline
 
 \end{tabular}
 \end{table}
@@ -116,7 +154,7 @@ Steps               & Handlinger          & Forventet observation/resultater & F
 \multicolumn{2}{|p{5cm}|}{Scenarie}            & \multicolumn{3}{p{9cm}|}{Hovedscenarie}                                          \\ \hline
 \multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Systemet er tændt og klar til brug.}                                 \\ \hline
 Steps               & Handlinger          & Forventet observation/resultater & Faktisk observation/resultater & OK/ FAIL \\ \hline
-1    & Bruger vælger ønsket mængde væske på touchscreen.  &  RPi sender besked til PSoC Master som sender signal til PSoC Slave. PSoC Slave tænder for pumpen ved flasken der er ved doseringspositionen. Pumpen stopper når ønsket mængde væske er doseret. &   &         \\ \hline
+1    & Bruger vælger 8 cl. vodka på touchscreen.  &  RPi sender besked til PSoC Master som sender signal til PSoC Slave. PSoC Slave tænder for pumpen ved flasken der er ved doseringspositionen. Pumpen stopper når der er doseret 8 cl. vodka. &   &         \\ \hline
 
 \end{tabular}
 \end{table}
@@ -130,8 +168,8 @@ Steps               & Handlinger          & Forventet observation/resultater & F
 \multicolumn{2}{|p{5cm}|}{Scenarie}            & \multicolumn{3}{p{9cm}|}{Hovedscenarie}                                          \\ \hline
 \multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Drinkmaster mangler IKKE service og klar til brug. Denvalgte flaske indeholder 70 cl.}                                 \\ \hline
 Steps               & Handlinger          & Forventet observation/resultater & Faktisk observation/resultater & OK/ FAIL \\ \hline
-1    & Bruger vælger at doserer 60 cl fra en flaske.  &  \textit{(TUC 4 initieres med 60 cl.)} &   &         \\ \hline
-2   & Bruger vælger at doserer 5 cl fra samme flaske. & RPi udskriver på touchscreen, at flasken er ved at være tom &    &   \\ \hline
+1    & Bruger vælger at doserer 60 cl vodka.  &  \textit{(TUC 4 initieres med 60 cl.)} &   &         \\ \hline
+2   & Bruger vælger at doserer 5 cl vodka. & RPi udskriver på touchscreen, at flasken er ved at være tom &    &   \\ \hline
 
 \end{tabular}
 \end{table}

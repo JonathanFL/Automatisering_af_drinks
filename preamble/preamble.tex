@@ -82,9 +82,9 @@
 \definecolor{lightgray}{rgb}{0.95,0.95,0.95}
 
 % When including these 3 lines, it now enumerates with C.S.L where C is chapter number, S is section number and L is list number
-\usepackage{enumitem}
-\setenumerate[1]{label=\thesection.\arabic*}
-\setenumerate[2]{label*=\arabic*}
+%\usepackage{enumitem}
+%\setenumerate[1]{label=\thesection.\arabic*}
+%\setenumerate[2]{label*=\arabic*}
 % It is now also possible to continue numbering by using \begin{enumerate}[resume]
 
 \lstset{ %
@@ -164,15 +164,52 @@
 % Header & footer
 %
 % Change normal headers and footers
-\nouppercaseheads
-\makeoddhead{headings}{Gruppe 12}{}{\small\rightmark}
-\makeevenhead{headings}{\small\leftmark}{}{Gruppe 12}
+%\nouppercaseheads
+%\makeoddhead{headings}{Gruppe 13}{}{\small\rightmark}
+%\makeevenhead{headings}{\small\leftmark}{}{Gruppe 12}
 
-\makeoddfoot{headings}{}{}{\small\thepage}
-\makeevenfoot{headings}{\small\thepage}{}{}
+%\makeoddfoot{headings}{}{}{\small\thepage}
+%\makeevenfoot{headings}{\small\thepage}{}{}
 
-\makeheadrule{headings}{\textwidth}{\normalrulethickness}
-\makefootrule{headings}{\textwidth}{\normalrulethickness}{\footruleskip}
+%\makeheadrule{headings}{\textwidth}{\normalrulethickness}
+%\makefootrule{headings}{\textwidth}{\normalrulethickness}{\footruleskip}
+
+
+
+%\usepackage[dvipsnames]{xcolor}
+%\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage[T1]{fontenc}
+\usepackage{afterpage}
+\usepackage{siunitx}
+\usepackage{transparent}
+\usepackage{hyperref}
+\usepackage[backend=bibtex,
+style=numeric,
+bibencoding=ascii
+%style=alphabetic
+%style=reading
+]{biblatex}
+%\usepackage[
+%singlelinecheck=false % <-- important
+%]{caption}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\fancypagestyle{plain}{%
+  \renewcommand{\headrulewidth}{0.00pt}%
+  \fancyhf{}%
+  \fancyhead[L]{\transparent{0.4}\includegraphics[scale=0.5]{preamble/au.jpg}}
+  \setlength{\headheight}{1.5cm}
+}
+
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.00pt}
+\fancyhead[L]{\transparent{0.4}\includegraphics[scale=0.4]{preamble/au.jpg}}
+\setlength{\headheight}{1.8cm}
+
+
 
 % Change chapter pages
 \copypagestyle{chapter}{plain}
@@ -300,14 +337,19 @@
 % Bibliography
 % http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[square,numbers]{natbib}
+%\usepackage[square,numbers]{natbib}
 % Add the \citep{key} command which display a
 % reference as [author, year]
 %\usepackage[authoryear]{natbib}
 %\setcitestyle{round,nonamebreak}
 %\bibpunct{(}{)}{;}{a}{}{,}
 % Appearance of the bibliography
-\bibliographystyle{IEEEtran}
+%\bibliographystyle{IEEEtran}
+
+
+
+
+\addbibresource{preamble/sample.bib}
 
 
 
