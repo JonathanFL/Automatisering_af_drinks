@@ -1,6 +1,36 @@
 \chapter{Kravspecifikation}
 
+For at definere hvad dette projekt handler om er det vigtigt at sætte rammer for hvad der helt præcist er tiltænkt. For at gøre dette er nedenstående use cases lavet for at gøre nogle af brugssituationerne med drink maskinen lidt klare.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.2]{Images/UC_diagram_JPEG.jpg}
+	\caption{Aktør-Kontekst diagram for Drink Master}
+	\label{fig:uc_actor_context}
+\end{figure}
+\FloatBarrier
+
+\newpage
 \section{Use cases}
+\subsection{Use case beskrivelser}
+\begin{itemize}
+    \item UC1: \textbf{Bestil Drink} $-$ Det essentielle ved maskinen skal være at man kan bestille drinks, lige som man ville gøre ved en bartender, men hvor blandingen af drinken sker automatisk ud fra hvordan man selv har defineret drinken til at være.
+    
+    \item UC2: \textbf{Lav egen drink} $-$ Der er ikke nogle drinks i drink maskinen til at starte med, så der skal tilføjes nogle inden man kan bestille en drink. Når man opretter en drink skal der angives type væske om mængden af væsken. Man kan oprette så mange drinks man vil, og man kan oprette flere af de samme, med få nyancer. Fx 1 drink med 2 cl vodka og en anden med 4 cl vodka.
+    
+    %\item UC2: \textbf{Opret drink} $-$ Der er ikke nogle drinks i drink maskinen til at starte med, så der skal tilføjes nogle inden man kan bestille en drink. Når man opretter en drink skal der angives type væske om mængden af væsken. Man kan oprette så man drinks man vil, og man kan oprette flere af de samme, med få nyancer. Fx 1 drink med 2 cl vodka og en anden med 4 cl vodka.
+    
+    \item UC3: \textbf{Slet drink} $-$ Denne er tiltænkt for at ejer af maskinen skal kunne slette drinks efter de er oprettet. Dette er fordi man kan komme til at oprette en drink anderledes end den var tiltænkt, men også fordi det skal give ejer mulighed for at slette drinks der er tilføjet den aften maskinen blev brugt, som man nu ikke længere gider at have på listen længere. 
+    
+    \item UC4: \textbf{Påfyld ingredienser} $-$ Når der en flaske der er ved at være tom, skal den udskiftes. Denne use case er til dette scenarie. Det er dog implicit at der i forvejen er tilføjet en flaske og at man selv skal fjerne flasken. Maskinens system vil give besked om når der er 10 mL væske i flasken tilbage.
+    
+    %\item UC4: \textbf{Tilføj flaske} $-$ Lige som der ikke er nogle drinks tilføjet i maskinen til at starte med, så er der heller ikke nogle flasker tilføjet til maskinen. For at tilføje en flaske til maskinen, skal flasken både gøres fysisk og i selve programmet. Dvs. man først montere flasken på maskinen og derefter angiver man i programmet hvor man har sat flasken og hvad man har sat der.
+    
+    %\item UC5: \textbf{Fjern flaske} $-$ Når en flaske har under 10ml tilbage, signalerer maskinen at flasken snart er tom. Dette er for at man kan få et heads-up på hvornår der skal tilføjes en ny flaske.
+    
+    \item UC5: \textbf{Service} $-$ Når systemet har lavet X antal drinks, giver maskinen besked om at den trænger til at blive ckecket for væskerester og andet der evt. kan trigge en tiltrængt rengøring. Touchskærmen kan være fedtet, der hvor flaskerne står kan der være væskerester og andre ting kan være fedtede med sukkerindeholdige væsker.
+\end{itemize}
+
 \subsection{UC1: Bestil drink}
 \begin{table}[H]
 \begin{tabular}{|p{5cm}|p{9cm}|}
@@ -34,7 +64,7 @@
 \end{tabular}
 \end{table}
 
-\subsection{UC2: Lav egen drink ELLER "Opret egen drink"?}
+\subsection{UC2: Lav egen drink}
 \begin{table}[H]
 \begin{tabular}{|p{5cm}|p{9cm}|}
 \hline
@@ -49,19 +79,21 @@
 \textbf{Prækondition:} & Maskinen er er tændt og aktiveret. \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \textbf{Postkondition:} & Der er oprettet en brugerdefineret drink i databasen og maskinen er klar til næste operation\\ \hline
-\begin{tabular}[c]{@{}l@{}} \textbf{Hovedscenarie:} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\\end{tabular}& \begin{tabular}[c]{@{}l@{}}
+\begin{tabular}[c]{@{}l@{}} \textbf{Hovedscenarie:} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\\end{tabular}& \begin{tabular}[c]{@{}l@{}}
 1. Systemet registrerer at bruger er indenfor 75 cm og \\\hspace*{4mm} touchskærm tænder.\\
-2. Bruger vælger "Lav egen drink" på touchskærmen.\\
+2. Bruger vælger "Opret drink" på touchskærmen.\\
 3. Bruger bedes indtaste et navn på den ønskede drink.\\
 4. Bruger indtaster navn på den ønskede drink og \\ \hspace*{4mm}trykker "OK". \\
 5. En liste over tilgængelige væsker vises. \\
 6. Bruger vælger en ønsket væske og angiver i boksen ud\\ \hspace*{4mm}for den valgte væske, den mængde der skal bruges.\\
-\hspace*{4mm}\textit{[EXT 1: Der er flere end 1 ingredienser i den}\\ \hspace*{4mm}\textit{ønskede drink].}\\%\hspace*{4mm}
-7. Bruger trykker "Tilføj drink". \\\hspace*{4mm}\textit{[EXT 2: Bruger trykker på annuller]}\\
+\hspace*{4mm}\textit{[EXT1: Der skal tilføjes flere ingredienser til den}\\ \hspace*{4mm}\textit{ønskede drink].}\\%\hspace*{4mm}
+7. Bruger trykker "Tilføj drink". \\\hspace*{4mm}\textit{[EXT2: Bruger trykker på annuller]}\\
 \end{tabular}\\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \textbf{Udvidelser/undtagelser:} & \begin{tabular}[c]{@{}l@{}}
-\textit{[EXT 2: Ikke tilstrækkelige mængder af ingredienser]}\\ 
+\textit{[EXT1: Der skal tilføjes flere ingredienser til den}\\\hspace*{12mm} \textit{ønskede drink]}\\ 
+1. Går til punkt 6 igen.\\
+\textit{[EXT2: Ikke tilstrækkelige mængder af ingredienser]}\\ 
 1. Går tilbage til startskærmen.\\
 2. Der blev ikke oprettet en ny drink. \\
 \end{tabular}\\ \hline
@@ -69,6 +101,7 @@
 \end{table}
 
 \subsection{UC3: Slet drink}
+
 \begin{table}[H]
 \begin{tabular}{|p{5cm}|p{9cm}|}
 \hline
@@ -96,7 +129,7 @@
 \rowcolor[HTML]{C0C0C0} 
 \textbf{Udvidelser/undtagelser:} & \begin{tabular}[c]{@{}l@{}}
 \textit{[EXT 1: Ejer trykker "nej"]}\\ 
-1. Applikationen går tilbage til siden med listen over drinks.\\
+1. Systemet går tilbage til siden med listen over drinks.\\
 2. Der blev ikke slettet en drink. \\
 \end{tabular}\\ \hline
 \end{tabular}
@@ -104,32 +137,109 @@
 
 
 \subsection{UC4: Påfyld ingredienser}
+
 \begin{table}[H]
 \begin{tabular}{|p{5cm}|p{9cm}|}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 \textbf{Navn:} & Påfyld ingredienser\\ \hline
-\textbf{Mål:} & At fylde ingredienser i maskinen\\ \hline
+\textbf{Mål:} & At fylde ingredienser i systemet\\ \hline
 \rowcolor[HTML]{C0C0C0} 
-\textbf{Initiering:} & Bruger/Ejer bestiller en drink.\\ \hline
+\textbf{Initiering:} & Ejer går hen til systemet\\ \hline
 \textbf{Aktører:} & Ejer\\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \textbf{Antal samtidige forekomster:} & 1\\ \hline
-\textbf{Prækondition:} & Indholdet i en af flaskerne er 10 cl. eller under.\\ \hline
+\textbf{Prækondition:} & At den flaske som skal udskiftes har <10cl tilbage.\\ \hline
 \rowcolor[HTML]{C0C0C0} 
-\textbf{Postkondition:} & Den valgte ingrediens er tilføjet og maskinen er funktionsdygtig\\ \hline
+\textbf{Postkondition:} & Der er blevet lagt en ny, fuld flaske i systemet og den er klar til at hælde drinks op.\\ \hline
+\begin{tabular}[c]{@{}l@{}} \textbf{Hovedscenarie:} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\\end{tabular}& \begin{tabular}[c]{@{}l@{}}
+1. Bruger/ejer vælger at lave en drink. \\
+2. Touchskærmen giver besked om at en eller flere\\ \hspace*{4mm}ingredienser skal genopfyldes..\\
+3. Ejer vælger "Udskift ingrediens".\\
+4. Ejer afmonterer den valgte flaske og påsætter den nye\\ \hspace*{4mm}flaske. \\
+5. Ejer trykker herefter på touch displayet "Ingrediens\\ \hspace*{4mm}udskiftet".\\
+6. Systemet laver den bestilte drink.\\ 
+7. Use case afsluttet.
+\end{tabular}\\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Udvidelser/undtagelser:} & \\ \hline
+
+\end{tabular}
+\end{table}
+
+\iffalse %Udkommentering start
+\subsection{UC4: Tilføj flaske}
+
+\begin{table}[H]
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Navn:} & Tilføj flaske\\ \hline
+\textbf{Mål:} & At en flaske er blevet tilføjet maksinen fysisk og at flasken er registreret i maskinens system.\\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Initiering:} & Bruger vil gerne tilføje en ny flaske til maskinen\\ \hline
+\textbf{Aktører:} & Bruger\\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Antal samtidige forekomster:} & 1\\ \hline
+\textbf{Prækondition:} & Der er plads til at blive tilføjet mindst én flaske i maskinen. Flaskeholderne er indexeret og markeret med tal\\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Postkondition:} & Der er fysisk blevet tilføjet en flaske og flasken er også registreret i maskinens system.\\ \hline
 \begin{tabular}[c]{@{}l@{}} \textbf{Hovedscenarie:} \\ \\ \\ \\ \\ \\ \\ \\\end{tabular}& \begin{tabular}[c]{@{}l@{}}
-1. Touchskærmen giver besked om at en eller flere \\\hspace*{4mm}ingredienser skal genopfyldes. \\
-2. Ejer vælger “Udskift ingrediens” \\
-3. Ejer afmonterer den valgte flaske og påsætter den nye \\\hspace*{4mm}flaske. \\
-4. Ejer trykker herefter på touch displayet \\\hspace*{4mm}“Ingrediens udskiftet”. \\
-5. Touchskærmen returnerer til hovedmenu \\
-6. Use case afsluttes\\
+1. Bruger sætter en flaske i en af flaskeholderne.\\
+2. Bruger trykker på "Tilføj flaske" på touchskærmen.\\
+3. På touchskærmen skal bruger nu angive hvilken position \\ \hspace*{4mm}flasken er sat på og hvad der er sat.\\
+4.I systemet vælger bruger den samme position som bruger\\
+\hspace*{4mm}fysisk har sat flasken på.\\
+5. I systemet angiver bruger hvilken type flaskens\\  \hspace*{4mm}indhold er.\\
+6. Bruger trykker "Bekræft tilføjelse".
+\\\hspace*{4mm}\textit{[EXT 1: Bruger trykker på annuller]}\\
+\end{tabular}\\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Udvidelser/undtagelser:} & \begin{tabular}[c]{@{}l@{}}
+\textit{[EXT 1: Bruger trykker på "annuller"]}\\ 
+1. Systemet går tilbage til hovedmenuen.\\
+2. Der er endnu ikke tilføjet en flaske til systemet. \\
+\end{tabular}\\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{UC5: Fjern flaske}
+\begin{table}[H]
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Navn:} & Fjern flaske\\ \hline
+\textbf{Mål:} & At have fysisk fjernet en flaske fra maskinen og også fjernet den i systemet\\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Initiering:} & Bruger bestiller en drink.\\ \hline
+\textbf{Aktører:} & Bruger\\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Antal samtidige forekomster:} & 1\\ \hline
+\textbf{Prækondition:} & Bruger vil gerne fjerne en flaske - måske fordi indholdet i en af flaskerne er 10 cl. eller under.\\ \hline
+\rowcolor[HTML]{C0C0C0}
+\textbf{Postkondition:} & Den ønskede flaske er fjernet og dette er registreret i systemet.\\ \hline
+\begin{tabular}[c]{@{}l@{}} \textbf{Hovedscenarie:} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\\end{tabular}& \begin{tabular}[c]{@{}l@{}}
+1. Touchskærmen giver besked om at en eller flere \\\hspace*{4mm}flasker er ved at være tomme. \\
+2. Bruger fjerner den flaske der er ved at være tom \\
+3. Bruger vælger "Fjern flaske" på touckskærm. \\
+4. Bruger præsenteres for flaskeplaceringer med flasker \\\hspace*{4mm} registreret på deres plads.\\
+5. Bruger vælger den flaskeplacering som tilhøre den flaske\\
+\hspace{1mm}han/hun lige har fjernet.\\
+6. Systemet giver beskeden "Er du sikker på at du vil fjerne\\
+\hspace*{4mm}denne flaske fra systemet?"\\
+7. Bruger trykker "Ja". Hvis bruger trykker "Nej", kan \\ 
+\hspace*{4mm} bruger vælge en anden flaske at fjerne\\
+\hspace*{4mm} eller gå tilbage til hovedmenuen ved at trykke på\\
+\hspace*{4mm}"Tilbage"\\
+8. Systemet fjerner flasken fra systemet og returnerer til\\
+\hspace*{4mm}hovedmenu\\
 \end{tabular}\\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \textbf{Udvidelser/undtagelser:} & Ingen \\ \hline
 \end{tabular}
 \end{table}
+
+\fi %udkommentering slut
 
 \subsection{UC5: Service}
 
@@ -147,7 +257,7 @@
 \textbf{Prækondition:} & Systemet har lavet det maksimal tilladte antal drinks.\\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \textbf{Postkondition:} & Der er udført service på drinksmaskinen\\ \hline
-\begin{tabular}[c]{@{}l@{}} \textbf{Hovedscenarie:} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\\end{tabular}& \begin{tabular}[c]{@{}l@{}}
+\begin{tabular}[c]{@{}l@{}} \textbf{Hovedscenarie:} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\\end{tabular}& \begin{tabular}[c]{@{}l@{}}
 1. Systemet giver besked til Ejer om at den  \\\hspace*{4mm}trænger til at blive serviceret.\\
 2. Ejer trykker ”ok”. \\
 3. Touchskærmen returnerer til hovedmenu, og er fuld \\ funktionel. \\
@@ -166,12 +276,12 @@
 \section{Test Use cases:}
 
 \begin{itemize}
-    \item Registrer bruger
-    \item Vægt registrerer kop
-    \item Ændre flaskeposition
-    \item Doser væske
-    \item Registrer tom flaske
-    \item PSoC master fortæller RPi at drink er færdig
+    \item TUC1: Registrer bruger
+    \item TUC2: Vægt registrerer kop
+    \item TUC3: Ændre flaskeposition
+    \item TUC4: Doser væske
+    \item TUC5: Registrer tom flaske
+    \item TUC6: PSoC master fortæller RPi at drink er færdig
 \end{itemize}
 
 \subsection{TUC 1: Registrer bruger}
@@ -180,7 +290,7 @@
 \hline
 \rowcolor[HTML]{C0C0C0} 
 \textbf{Navn:} & Registrer bruger\\ \hline
-\textbf{Mål:} & Motionsensor registrere bruger og tænder for touchscreen\\ \hline
+\textbf{Mål:} & Motionsensor registrerer bruger og tænder for touchscreen\\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \textbf{Initiering:} & Bruger\\ \hline
 \textbf{Aktører:} & Bruger\\ \hline

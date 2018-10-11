@@ -1,0 +1,89 @@
+\section{Generel feedback}
+Begrebslisten skal være lined up.
+Generel tekst til alle diagrammer
+
+\section{Review af projektformulering}
+Skal i stedet for burde ved krav om afstandssensor
+Afsnit om forklaring af valg af arkitektur: Hvorfor anvendes en PSoC pre aktuator/sensor?
+Gennemgang af MoSCoW - check for dubletter
+Must/should af oprette drink vs mulighed for blandingsforhold
+
+\section{Review af kravspecifikation}
+* Ejer står på UC 1 og 2
+* Ejer/bruger Definition af deres rolle i systemet. Hvornår er ejer bruger osv?
+Aktørbeskrivelse
+
+* Formulering i produktbeskrivelse af at bestille drink (Skal glas stå på censor først).
+
+\subsection{Use Cases}
+
+* Postkondition i UC1 "Kunden har modtaget ønsket drink, drink er lavet etc."
+
+* UC2 [EXT2] stemmer ikke overens i tabellen.
+* Derudover ift. moscow must: "systemet burde have en motionsensor.."
+* UC2 initialisering: tænder skærm, derfor burde pkt 1 slettes
+
+
+* UC3: Du kan ende i et uendeligt loop - du SKAL slette en flaske før du kan komme tilbage til hovedmenu
+
+* UC4: Denne use case startes af use case 1, så de første punkter behøves ikke.
+Kan en flaske tømmes hvis der er mere end 10 cl tilbage? 
+
+\subsection{Test Use Cases}
+
+Manglende argumentation for brug af TUC
+
+Lav dobbelt quotes i LaTeX
+
+\subsection{Ikke funktionelle krav}
+Der anvendes kun UPS, hvorfor?
+Specificering af krav om at drinken skal kunne mixes på mindre end 1 min.
+
+"Det skal tage mindst 2 sekunder, fra der bliver trykket på "Mix Drink"..."
+Tolerancer på værdier der ikke er min/max
+
+\subsection{Systemarkitektur}
+\subsubsection{Hardware}
+
+* Overordnede ports i bdd
+* Input fra omverdenen, (touch mm.) 
+* Temperature gauge skal slettes
+* Multipliciteter af parts, pumper, vægte mm.
+
+
+IBD:
+De sorte pile behøver ikke være der når der er flowporte.
+http://prntscr.com/l4reih
+Der er en løs forbindelse (s2) i figur 3.7: ibd for drink master.
+Husk Konjugerede flowports for Seriel kommunikation.
+Uddyb signaltyperne yderligere, de giver ikke et klart billede af deres type.
+
+
+* Figur 3.12 : Det er ikke et PWM signal der styrer en steppermotor
+
+\subsubsection{Software}
+Rettelse af prefix til postfix i tabel 4.1
+
+* Domænemodel: I stedet for at sætte 1 ud fra alle porte, så i stedet skriv at, hvis ikke der er et 1-tal så er det underforstået at det er 1.
+* Beskriv fordele ved domænemodel
+
+
+* Figur 5.11: PSoC Master giver beskeden til RPi, selvom Pi'en er SPI master. Hvordan skal dette implementeres?
+
+************Applikationmodeller************
+
+ 
+Controller klasser er CPU'er - argumenter for dette. I ISE var det meningen at de skulle være navngivet ud fra use cases
+Lav et overordnet klassediagram for hver processor og måske ikke et for hver UC1. Men lav et sekvensdiagram for hver UC. 
+
+Undersøg hvordan der skal laves UML diagrammer for C eller C++.
+
+\section{Review af accepttest specifikation}
+Lav drink først: derefter bestil drink. Skal der være predefinerede drinks. Hvad med flaske opstilling?
+
+Lav accepttest om hvor meget væske der kommer ud, altså teste om hvis man forventer at der kommer 20cl ud, er det også det der kommer ud?
+
+Review:
+Lars synes det var meget godt. Meget mundtlige. Synes han mangler lidt skriftlig feedback. Godt med en slutning om hvad jeres generelle materiale vi har lavet indtil nu.
+Reviewet kan også gøres mere tematisk fx. med punkter som generel formulering, tekniske anbefalinger osv. 
+I senere reviews kan der evt være mere specifikke inputs til implementering og design.

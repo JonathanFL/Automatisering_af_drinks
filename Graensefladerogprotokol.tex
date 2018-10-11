@@ -3,7 +3,7 @@
 \subsection{Grænseflader}
 RPi'en kører på 3.3 V, hvilket vil sige at PSoC'en også skal gøre dette således at de logiske niveaer stemmer overens. Det samme gælder for PSoC master til PSoC Slave. For kommunikation mellem RPi og PSoC anvendes SPI protokollen. For kommunikation mellem PSoC Master og PSoC Slave anvendes I2C kommunikation.
 \subsection{Protokoller}
-Vi skal i vore system sende en opskrift, dvs. en lang række instruktioner, mellem forskellige dele i systemet. RPi'en sender den samlede instruktion ved brug af SPI til PSoC Master som så skal uddeligere de forskellige opgaver til de respektive PSoC Slaves ved brug af I2C protokollen. Opskriften består af forskellige instruktioner som fx. at dreje hjulet med flasker et hvist antal grader. Et andet eksempel kunne være at dispensere \textbf{x}ml af flaske nr 2. Ud fa opskriften som findes i drink databasen, udregner RPi'en alle de nødvendige instruktioner som det er nødvendigt at foretage, for at drinken kan laves. Disse sendes herefter i rækkefølge til PSoC Master som så uddelligerer disse opgaver til PSoC Slaves. Herunder kan ses \ref{tab:protokolTabel} med oversættelse af kommandoer:
+Vi skal i vore system sende en opskrift, dvs. en lang række instruktioner, mellem forskellige dele i systemet. RPi'en sender den samlede instruktion ved brug af SPI til PSoC Master som så skal uddeligere de forskellige opgaver til de respektive PSoC Slaves ved brug af I2C protokollen. Hele opskriften sendes 2 gange af RPi'en til PSoC Master. PSoC Master verificerer at den modtagne opskrift ved hver transmission er ens. Opskriften består af forskellige instruktioner som fx. at dreje hjulet med flasker et hvist antal grader. Et andet eksempel kunne være at dispensere \textbf{X} antal mL af flaske nr 2. Ud fra opskriften som findes i drink databasen, udregner RPi'en alle de nødvendige instruktioner som det er nødvendigt at foretage, for at drinken kan laves. Disse sendes herefter i rækkefølge til PSoC Master som så uddelegerer disse opgaver til PSoC Slaves. Herunder kan ses \ref{tab:protokolTabel} med oversættelse af kommandoer:
 \begin{table}[H]
 \begin{tabular}{|l|l|}
 \hline
@@ -14,7 +14,7 @@ Rotér x grader mod uret                  & rbx                       \\ \hline
 Rotér x grader med uret                  & rfx                       \\ \hline
 Dispensér x ml af flaske y               & dyx                       \\ \hline
 Undersøg om alle instruktioner er udført & ?                         \\ \hline
-Prefix efter hver instruktion            & e                         \\ \hline
+Postfix efter hver instruktion            & e                         \\ \hline
 PSoC Master til RPi - Drink færdig       & y                         \\ \hline
 \end{tabular}
 \caption{Tabel for oversættelse af kommandoer}
@@ -34,3 +34,5 @@ Beskrivelse & Start transmission & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{
 \caption{Eksempel på en transmission af data med forklaringer}
 \label{tab:transExample1}
 \end{table}
+
+Da det for vores system er kritisk at pumperne ikke tændes hvis de ikke er i positionen over koppen, verificeres de modtagne data ved at undersøge om rækkefølgen af rotationer og start af pumper, er realistiske. Hvis dette ikke er tilfældet meldes en fejl tilbage til RPi'en om at der er en fejl i beskeden. Hvis opskriften godkendes sendes en besked om at brygning af drinken igangsættes. For at dette kan lade sig gøre ved brug af SPI protokollen, læser RPi'en efter et givent delay, det der står i PSoC Masterens tx buffer og reagerer på dette. 

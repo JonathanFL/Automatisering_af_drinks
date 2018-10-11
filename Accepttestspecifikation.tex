@@ -1,3 +1,4 @@
+\chapter{Accepttestspecifikation}
 \section{Acceptestspecifikation af UC}
 
 \subsection{UC 1: Bestil drink}
@@ -23,11 +24,12 @@ Steps               & Handlinger          & Forventet observation/resultater & F
 \multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Drinkmaster er funktionsdygtig og brugeren har placeret et glas i systemet.}                                 \\ \hline
 Steps               & Handlinger          & Forventet observation/resultater & Faktisk observation/resultater & OK/ FAIL \\ \hline
 1    & Bruger vælger drinken "Vodka/cola" på touchscreen.  & Systemet giver besked om at en eller flere ingredienser skal genopfyldes, og venter på ejer, så UC 4 kan initieres. &   &      \\ \hline
-2    & Ejer gennemfører UC 4  & Systemet returnerer til UC 1. &   &         \\ \hline
+2    & Bruger gennemfører UC 4  & Systemet returnerer til UC 1. &   &         \\ \hline
 
 \end{tabular}
 \end{table}
 
+%\subsection{UC 2: Opret drink}
 \subsection{UC 2: Lav egen drink}
 
 \begin{table}[H]
@@ -85,6 +87,7 @@ Steps               & Handlinger          & Forventet observation/resultater & F
 \end{tabular}
 \end{table}
 
+
 \subsection{UC 4: Påfyld ingredienser}
 
 \begin{table}[H]
@@ -92,10 +95,42 @@ Steps               & Handlinger          & Forventet observation/resultater & F
 \hline
 \multicolumn{2}{|p{5cm}|}{Use case under test} & \multicolumn{3}{p{9cm}|}{Påfyld ingredienser}                                       \\ \hline
 \multicolumn{2}{|p{5cm}|}{Scenarie}            & \multicolumn{3}{p{9cm}|}{Hovedscenarie}                                          \\ \hline
-\multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Indholdet i vodkaflasken er 10 cl. eller under.}                                 \\ \hline
+\multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Vodkaflasken indeholder 10 cl. eller mindre}                                 \\ \hline
 Steps               & Handlinger          & Forventet observation/resultater & Faktisk observation/resultater & OK/ FAIL \\ \hline
-1    & Ejer vælger drinken "Vodka/cola" .  & System giver besked om at vodkaflasken skal genopfyldes.&   &         \\ \hline
-2    & Ejer vælger “Udskift ingrediens” og afmonterer vodkaflasken og på sætter en ny,  & Systemet returnerer til hovedmenu.  &   &         \\ \hline
+1    & Bruger/ejer bestiller vodka juice.  & Systemet giver besked om at vodkaflasken skal genopfyldes&   &         \\ \hline
+2    & Ejer vælger "Udskift ingrediens"  & Systemet venter på at ejer har udskiftet ingrediensen.  &   &         \\ \hline
+3    & Ejer udskifter vodkaflasken og trykker på "ingrediens udskiftet" &  Systemet går igang med at lave drinken vodka juice.   &   & \\ \hline
+
+\end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+\begin{tabular}{|p{1cm}|p{4cm}|p{4cm}|p{4cm}|p{1cm}|}
+\hline
+\multicolumn{2}{|p{5cm}|}{Use case under test} & \multicolumn{3}{p{9cm}|}{Tilføj flaske}                                       \\ \hline
+\multicolumn{2}{|p{5cm}|}{Scenarie}            & \multicolumn{3}{p{9cm}|}{EXT1: Bruger trykker på "annuller"}                                          \\ \hline
+\multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Drink maskinen er tændt, brugeren vil gerne tilføje en flaske}                                 \\ \hline
+Steps               & Handlinger          & Forventet observation/resultater & Faktisk observation/resultater & OK/ FAIL \\ \hline
+1    & Brugeren vælger "Tilføj flaske".  & Systemet præsentere siden "Tilføj flaske", som viser et felt "Flasketype" og et felt "Flaskeplacering".&   &         \\ \hline
+2    & Brugeren trykker på annuller.  & Systemet returnere til hovedmenuen.  &   &         \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsection{UC 5: Service}
+
+\begin{table}[H]
+\begin{tabular}{|p{1cm}|p{4cm}|p{4cm}|p{4cm}|p{1cm}|}
+\hline
+\multicolumn{2}{|p{5cm}|}{Use case under test} & \multicolumn{3}{p{9cm}|}{Fjern flaske}                                       \\ \hline
+\multicolumn{2}{|p{5cm}|}{Scenarie}            & \multicolumn{3}{p{9cm}|}{Hovedscenarie}                                          \\ \hline
+\multicolumn{2}{|p{5cm}|}{Prækondition}        & \multicolumn{3}{p{9cm}|}{Systemet har lavet det maksimal tilladte antal drinks.}                                 \\ \hline
+Steps               & Handlinger          & Forventet observation/resultater & Faktisk observation/resultater & OK/ FAIL \\ \hline
+1    & Bruger/ejer har lavet 10 drinks  & Systemet giver besked om at den trænger til service. &   &         \\ \hline
+2    & Ejer trykker OK på touchskærmen.  & Systemet returnerer til hovedmenuen og er fuldt funktionel.&   &         \\ \hline
+3    & Ejer trykker på service.  & Systemet går i servicemode  & &  \\ \hline
+4    & Ejer servicerer maskinen og trykker på "Afslut service".  & Systemet returnerer til hovedmenuen.  & &  \\ \hline
 
 \end{tabular}
 \end{table}

@@ -1,4 +1,4 @@
-\documentclass[11pt,Danish,a4paper,oneside,openright,final]{memoir}
+\documentclass[11pt,Danish,a4paper,oneside,openright,final]{memoir} 
 
 %% Memoir are using an emulation of the ccaption package
 %% so to use the caption package without warnings we first
@@ -153,26 +153,50 @@
 \makeatother
 
 %
-% Margins
-%
+\setheaderspaces{*}{5\onelineskip}{*}
+\makepagestyle{sitin}
+
+% Margin
 \setlrmarginsandblock{*}{3.5cm}{0.75} % højre og venstre
 \setulmarginsandblock{3cm}{*}{0.75}    % top og bund
 \checkandfixthelayout[nearest]        % specifikt valg af højde algoritme
 \renewcommand{\marginparwidth}{75pt}
 
-%
-% Header & footer
-%
-% Change normal headers and footers
-%\nouppercaseheads
-%\makeoddhead{headings}{Gruppe 13}{}{\small\rightmark}
-%\makeevenhead{headings}{\small\leftmark}{}{Gruppe 12}
+\makeoddhead{sitin}
+	%Left
+	{
+		Gruppe 12
+	}
+	%Center
+	{
+		\small\rightmark
+	}
+	%Right
+	{
+	    \includegraphics[height=4\onelineskip]{preamble/LargeAULogo.png}
+	}
 
-%\makeoddfoot{headings}{}{}{\small\thepage}
-%\makeevenfoot{headings}{\small\thepage}{}{}
+\makeevenhead{sitin}
+	%Left
+	{
+		\includegraphics[height=4\onelineskip]{preamble/LargeAULogo.png}
+	}
+	%Center
+	{
+		\small\leftmark 
+	}
+	%Right
+	{
+	    Gruppe 12
+	}
+	
+\makeoddfoot{sitin}{}{}{\thepage}
+\makeevenfoot{sitin}{}{}{\thepage}
 
-%\makeheadrule{headings}{\textwidth}{\normalrulethickness}
-%\makefootrule{headings}{\textwidth}{\normalrulethickness}{\footruleskip}
+\makeheadrule{sitin}{\textwidth}{.4pt}
+\makefootrule{sitin}{\textwidth}{.4pt}{0.1cm}
+
+\pagestyle{sitin}
 
 
 
@@ -193,29 +217,12 @@ bibencoding=ascii
 %singlelinecheck=false % <-- important
 %]{caption}
 
-\usepackage{fancyhdr}
-\usepackage{lastpage}
-
-\pagestyle{fancy}
-\fancypagestyle{plain}{%
-  \renewcommand{\headrulewidth}{0.00pt}%
-  \fancyhf{}%
-  \fancyhead[L]{\transparent{0.4}\includegraphics[scale=0.5]{preamble/au.jpg}}
-  \setlength{\headheight}{1.5cm}
-}
-
-\fancyhf{}
-\renewcommand{\headrulewidth}{0.00pt}
-\fancyhead[L]{\transparent{0.4}\includegraphics[scale=0.4]{preamble/au.jpg}}
-\setlength{\headheight}{1.8cm}
-
-
-
 % Change chapter pages
 \copypagestyle{chapter}{plain}
 \makeoddfoot{chapter}{}{}{\small\thepage}
 \makeevenfoot{chapter}{\small\thepage}{}{}
 \makefootrule{chapter}{\textwidth}{\normalrulethickness}{\footruleskip}
+
 
 %
 % Section titles
@@ -378,6 +385,7 @@ bibencoding=ascii
 %	breaklinks
 %}
 
-
+\usepackage{minted}
+\definecolor{LightGray}{gray}{0.9}
 
 \usepackage{memhfixc} %% Include this package after hyperref when using memoir

@@ -1,0 +1,48 @@
+\chapter{Indledning}
+Drink Master er en maskine der laver drinks for brugeren. Den ønskede drink vælges ved hjælp af en touchskærm. Når en drink vælges, sendes en besked til maskinen som beder kunden om at indsætte en kop. Når koppen registreres, går maskinen i gang med at lave den valgte drink. Maskinen indikerer til kunden når drinken er færdig. Dette gør den via to LED´er og touchskærmen. 
+\section{Produktbeskrivelse}
+Drink Master skal virke ved at brugeren vælger en drink på en touchskærm, med forskellige valgmuligheder. Derefter registrerer en vægtsensor om der er et glas på båndet (Hvorpå drinken står) og derved, ved maskinen, om den kan begynde at hælde op. Samme sensor ville også kunne måle om der er for meget væske i forhold til hvad glasset kan indeholde.\\
+For at maskinen kan variere mellem drinks, kører et hjul med forskellige flasker af drink ingredienser rundt over glassets position. Hjulet vil blive styret af et tandhjul, der er forbundet med en Motor, som har sit eget tandhjul. Der vil være en pumpe på hver flask som styrer hvor meget der kommer i glasset. Pumperne vil være styret af en timer, mens hjulet med flaskerne vil være styret af software til at vide hvilken position det er i. Hjulet kan dreje 180 grader, hver vej.\\
+Når drinken er færdig, vil der på skærmen udskrives en besked om dette, og der vil være en LED, som lyser rød mens drinken hældes op, og grøn når drinken er klar. Der vil være en sensor som tænder lys og skærm, når en person er inden for maskinens rækkevidde. 
+
+\section{MoSCow}
+Must have:
+\begin{itemize}
+    \item Systemet skal have et GUI-baseret user interface på touchskærm.
+    \item Systemet skal indeholde en Raspberry Pi Zero WiFi.
+    \item Systemet skal indeholde en PsoC pr. sensor/aktuator samt en PsoC Master som står for kommunikation mellem sensor-PsoC og Raspberry Pi
+    \item Systemet skal have pumper, som bliver styret af en PSoC(slave)
+    \item Raspberry Pi skal kunne kommunikere med Psoc Master via. SPI protokollen
+    \item Psoc Master skal kommunikere med Psoc slaverne via. I2C.
+    \item En vægt-sensor, som registrerer om glasset er stillet på platformen. 
+    \item Systemet skal have en steppermotor, til at rotere flaskeholderen. Steppermotor er bipolar og styres vha. dobbelt H-bro. 
+    \item Systemet skal selv kunne dosere automatisk, ved hjælp af de elektriske pumper.
+    \item Systemet skal have en motion sensor ved touchskærmen, som registrerer om en kunde stiller sig op til systemet.
+    \item Det skal være en mulighed at bruger selv vælger blandingsforhold for drinks.
+\end{itemize}
+Should have:
+\begin{itemize}
+    \item En database der indeholder opskrifter på drinks som brugeren kan vælge.
+    \item Mulighed for valg af blandingsforhold.
+    \item I systemet burde det være mulighed for at ændre flasker og placering
+\end{itemize}
+Could have:
+\begin{itemize}
+    \item Mobilapplikation til bestilling og betaling.
+    \item En vægtsensor, som registrerer om en flaske er tom.
+    \item En funktion der gør det muligt for brugeren at lave sin egen drink.
+    \item Mulighed for at tilføje drinks i et bestemt tidsinterval eller permanent af ejer med password.
+\end{itemize}
+Won’t have(this time): 
+\begin{itemize}
+    \item Isterninger eller lime dispenser
+    \item Konfigurerbare flaskeholdere til forskellige typer flasker.
+    \item Mulighed for at ryste eller rør drink.
+    \item Køleelement
+\end{itemize}
+
+\section{Udviklingsværktøjer}
+\begin{itemize}
+    \item Visio Professional 2016
+    \item Overleaf V2
+\end{itemize}

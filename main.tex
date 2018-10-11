@@ -10,36 +10,16 @@
 \TabPositions{4cm, 6cm, 8cm}
 
 \begin{document}
-
-
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
-
-\begin{center}%\center % Center everything on the page
- 
-%----------------------------------------------------------------------------------------
-%	HEADING SECTIONS
-%----------------------------------------------------------------------------------------
-
-\textsc{\\[1cm]\LARGE Aarhus Universitet}\\[1cm] % Name of your university/college
-\textsc{\Large E \& IKT, 3. semester}\\[0.5cm] % Major heading such as course name
-\textsc{\large PRJ3 Semesterprojekt 3, 2018}\\[0.5cm] % Minor heading such as course title
-\textsc{\large Gruppe 12}\\[0.5cm] % Minor heading such as course title
-
-%----------------------------------------------------------------------------------------
-%	TITLE SECTION
-%----------------------------------------------------------------------------------------
-
-\HRule \\[0.5cm]
-{ \huge \bfseries Automatisering af drinks}\\[0.5cm] % Title of your document
-{ \textbf{\Large Drink master}} % Title of your document
-\HRule \\[1cm]
-
-\vfill % Fill the rest of the page with whitespace
-\end{center}
+\includepdf[pages=1]{Frontpage.pdf}
 \frontmatter
+\newpage
+\input{Frontmatter/abstract}
+\input{Frontmatter/preface}
+\input{Frontmatter/acronymstre}
+\cleardoublepage
 \tableofcontents*
 \mainmatter
-\input{Ordliste.tex}
+\input{Indledning.tex}
 \input{Kravspecifikation.tex}
 \input{Hardware.tex}
 \input{Graensefladerogprotokol.tex}
@@ -47,9 +27,9 @@
 \input{Accepttestspecifikation.tex}
 
 
-
-%\input{SekvensDiagrammer.tex}
-\cite{ref1}
+Heeeeey you\\
+\textcolor{white}{svans}\\
+Hidden message above this line
 
 
 \printbibliography
